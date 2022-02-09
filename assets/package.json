@@ -1,6 +1,17 @@
 {
+  "name": "assets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "deploy": "mix assets.deploy && rm -f _build/esbuild*"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "cd .. && mix assets.deploy && rm -f _build/esbuild*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@popperjs/core": "^2.11.2",
+    "bootstrap": "^5.1.3"
   }
-
 }
