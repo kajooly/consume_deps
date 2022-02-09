@@ -25,6 +25,8 @@ defmodule ComsumeDepsWeb.Router do
 
     live "/post/:id", PostLive.Show, :show
     live "/post/:id/show/edit", PostLive.Show, :edit
+
+    live "/vista", VistaLive.Index, :index
   end
 
   # Other scopes may use custom stacks.
