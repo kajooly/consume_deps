@@ -31,7 +31,9 @@ defmodule ComsumeDepsWeb do
     quote do
       use Phoenix.View,
         root: "lib/comsume_deps_web/templates",
-        namespace: ComsumeDepsWeb
+        namespace: ComsumeDepsWeb,
+        ## multi folder template support
+        pattern: "**/*"
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
