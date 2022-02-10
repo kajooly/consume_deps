@@ -67,7 +67,9 @@ defmodule ComsumeDeps.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"],
-      "phoenix.digest": ["phx.digest"]
+      "phoenix.digest": ["phx.digest"],
+      "migrate.auth": ["cmd cd ./deps/kjly_mapp_auth", "ecto.migrate"],
+      "rollback.auth": ["cmd cd ./deps/kjly_mapp_auth", "ecto.rollback --all"]
     ]
   end
 end
