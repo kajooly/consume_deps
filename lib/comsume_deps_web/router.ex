@@ -1,11 +1,26 @@
 defmodule ComsumeDepsWeb.Router do
   use ComsumeDepsWeb, :router
 
+  import KjlyMappAuthWeb.UserAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
     plug :put_root_layout, {ComsumeDepsWeb.LayoutView, :root}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+    # AUTH :=> Agregamos el plug para tener acceso a la info
+    plug :fetch_current_user
+    # AUTH :=> Agregamos el plug para tener acceso a la info del token generado
+    # plug :put_user_token
+  end
+
+  pipeline :browser_nulo do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, {ComsumeDepsWeb.LayoutView, :nulo}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
@@ -15,7 +30,7 @@ defmodule ComsumeDepsWeb.Router do
   end
 
   scope "/", ComsumeDepsWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_user]
 
     get "/", PageController, :index
 
@@ -27,6 +42,11 @@ defmodule ComsumeDepsWeb.Router do
     live "/post/:id/show/edit", PostLive.Show, :edit
 
     live "/vista", VistaLive.Index, :index
+  end
+
+  scope "/" do
+    pipe_through [ :browser_nulo ]
+    forward "/", KjlyMappAuthWeb.Router
   end
 
   # Other scopes may use custom stacks.

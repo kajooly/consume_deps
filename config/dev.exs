@@ -9,6 +9,15 @@ config :comsume_deps, ComsumeDeps.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
+# Configure your database for auth
+config :kjly_mapp_auth, ComsumeDeps.Repo,
+  username: System.get_env("PSQL_USERNAME"),
+  password: System.get_env("PSQL_PASSWORD"),
+  database: System.get_env("PSQL_DATABASE"),
+  hostname: System.get_env("PSQL_HOSTNAME"),
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
+
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #

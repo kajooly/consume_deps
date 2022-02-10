@@ -45,6 +45,12 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
+config :kjly_mapp_auth,
+  admin_title: "Auth",
+  otp_app: :comsume_deps,
+  ecto_repo: ComsumeDeps.Repo,
+  router: ComsumeDepsWeb.Router
+
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
