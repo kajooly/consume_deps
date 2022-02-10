@@ -7,7 +7,9 @@
 # General application configuration
 import Config
 
-config :comsume_deps,
+
+
+  config :comsume_deps,
   ecto_repos: [ComsumeDeps.Repo],
   generators: [binary_id: true]
 
@@ -46,10 +48,7 @@ config :logger, :console,
   metadata: [:request_id]
 
 config :kjly_mapp_auth,
-  admin_title: "Auth",
-  otp_app: :comsume_deps,
-  ecto_repo: ComsumeDeps.Repo,
-  router: ComsumeDepsWeb.Router
+  ecto_repos: [KjlyMappAuth.Repo]
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

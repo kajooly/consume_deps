@@ -10,7 +10,7 @@ config :comsume_deps, ComsumeDeps.Repo,
   pool_size: 10
 
 # Configure your database for auth
-config :kjly_mapp_auth, ComsumeDeps.Repo,
+config :kjly_mapp_auth, KjlyMappAuth.Repo,
   username: System.get_env("PSQL_USERNAME"),
   password: System.get_env("PSQL_PASSWORD"),
   database: System.get_env("PSQL_DATABASE"),
