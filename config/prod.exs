@@ -24,7 +24,7 @@ base_domain = System.get_env("BASE_DOMAIN") ||
     ]
 
 config :comsume_deps, ComsumeDepsWeb.Endpoint,
-  url: [host: "notify.#{base_domain}", port: 4000],
+  url: [host: "consume.#{base_domain}", port: 4000],
   cache_static_manifest: "priv/static/cache_manifest.json",
   check_origin: originslist
 
